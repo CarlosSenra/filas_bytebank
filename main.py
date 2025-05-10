@@ -10,9 +10,8 @@ fila_teste.atualizafila()
 print(fila_teste.chamacliente(5))
 print(fila_teste.chamacliente(10))
 
-
-
 fila_teste2 = FilaPrioritaria()
+
 fila_teste2.atualiza_fila()
 fila_teste2.atualiza_fila()
 fila_teste2.atualiza_fila()
