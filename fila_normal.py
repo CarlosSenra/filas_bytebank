@@ -1,6 +1,7 @@
 """Cria uma fila normal."""
 
 
+from typing import List
 from fila_base import FilaBase
 from constantes import CODIGO_NORMAL
 
@@ -13,15 +14,15 @@ class FilaNormal(FilaBase):
     """
 
     codigo: int = 0
-    fila = []
-    clientesatendidos = []
+    fila: List[str] = []
+    clientes_atendidos: List[str] = []
     senha_atual: str = ""
 
     def gera_senha_atual(self) -> None:
         """Gera a senha para a fila."""
-        self.senhaatual = f'{CODIGO_NORMAL}{self.codigo}'
+        self.senha_atual = f'{CODIGO_NORMAL}{self.codigo}'
 
-    def chama_cliente(self, caixa: str) -> str:
+    def chama_cliente(self, caixa: int) -> str:
         """Chama o cliente para um caixa.
 
         Args:
@@ -31,5 +32,5 @@ class FilaNormal(FilaBase):
             str: Texto contendo o numero do cliente e qual o caixa.
         """
         cliente_atual: str = self.fila.pop(0)
-        self.clientesatendidos.append(cliente_atual)
+        self.clientes_atendidos.append(cliente_atual)
         return (f"Cliente atual: {cliente_atual}, dirija-se ao caixa: {caixa}")

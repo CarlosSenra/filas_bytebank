@@ -2,6 +2,7 @@
 
 
 import abc
+from typing import List, Union, Dict
 from constantes import TAMANHO_PADRAO_MAXIMO, TAMANHO_PADRAO_MINIMO
 
 
@@ -9,8 +10,8 @@ class FilaBase(metaclass=abc.ABCMeta):
     """Classe que define uma fila base."""
 
     codigo: int = 0
-    fila = []
-    cliente_atendidos = []
+    fila: List[str] = []
+    cliente_atendidos: List[str] = []
     senha_atual = ""
 
     def reseta_fila(self) -> None:
@@ -33,12 +34,37 @@ class FilaBase(metaclass=abc.ABCMeta):
         self.gera_senha_atual()
         self.insere_cliente()
 
+    def estatistica(self, dia: str, agencia: int, flag: str) -> Dict:
+        """Calcula estatisticas em relacao a fila prioritaria.
+
+        Args:
+            dia (str): Data que deseja a estatistisca. "01/01/1970".
+            agencia (int): numero da agencia.
+            flag (str): 'detail' ou qualquer outra coisa.
+
+        Returns:
+            dict: _description_
+        """
+        estatistica: Dict[str, Union[List[str], str, int]] = {}
+        if flag != 'detail':
+            estatistica = {f'{agencia}-{dia}': len(self.cliente_atendidos)}
+        else:
+            estatistica = {}
+            estatistica['dia'] = dia
+            estatistica['agencia'] = agencia
+            estatistica['clientes_atendidos'] = self.cliente_atendidos
+            estatistica['quantidade_clientes_atendidos'] = (
+                len(self.cliente_atendidos)
+            )
+
+        return estatistica
+
     @abc.abstractmethod
     def gera_senha_atual(self):
         """Define metodo abistrato de gerar senha."""
         ...
 
     @abc.abstractmethod
-    def chama_cliente(self):
+    def chama_cliente(self, caixa: int) -> str:
         """Define metodo abistrato de chamar cliente."""
         ...
