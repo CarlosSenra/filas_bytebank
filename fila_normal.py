@@ -14,17 +14,11 @@ class FilaNormal(FilaBase):
     codigo: int = 0
     fila = []
     clientesatendidos = []
-    senhaatual: str = ""
+    senha_atual: str = ""
 
     def gera_senha_atual(self) -> None:
         """Gera a senha para a fila."""
         self.senhaatual = f'NM{self.codigo}'
-
-    def atualiza_fila(self) -> None:
-        """Atualiza a fila."""
-        self.reseta_fila()
-        self.gera_senha_atual()
-        self.fila.append(self.senhaatual)
 
     def chama_cliente(self, caixa: str) -> str:
         """Chama o cliente para um caixa.

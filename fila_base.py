@@ -4,7 +4,7 @@
 import abc
 
 
-class FilaBase(abc.ABCMeta):
+class FilaBase(metaclass=abc.ABCMeta):
     """Classe que define uma fila base."""
 
     codigo: int = 0
@@ -22,14 +22,19 @@ class FilaBase(abc.ABCMeta):
         else:
             self.codigo += 1
 
+    def insere_cliente(self):
+        """Insere um cliente na fila."""
+        self.fila.append(self.senha_atual)
+
+    def atualiza_fila(self):
+        """Atualiza a fila prioritaria."""
+        self.reseta_fila()
+        self.gera_senha_atual()
+        self.insere_cliente()
+
     @abc.abstractmethod
     def gera_senha_atual(self):
         """Define metodo abistrato de gerar senha."""
-        ...
-
-    @abc.abstractmethod
-    def atualiza_fila(self):
-        """Define metodo abistrato de atualizar fila."""
         ...
 
     @abc.abstractmethod

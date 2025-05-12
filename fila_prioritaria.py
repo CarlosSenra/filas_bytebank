@@ -16,12 +16,6 @@ class FilaPrioritaria(FilaBase):
         """Gera uma senha para um cliente."""
         self.senha_atual = f'PR{self.codigo}'
 
-    def atualiza_fila(self) -> None:
-        """Atualiza a fila prioritaria."""
-        self.reseta_fila()
-        self.gera_senha_atual()
-        self.fila.append(self.senha_atual)
-
     def chama_cliente(self, caixa: int) -> str:
         """Chama um cliente para um caixa especifico.
 
