@@ -2,6 +2,7 @@
 
 
 from fila_base import FilaBase
+from constantes import CODIGO_PRIORITARIO
 
 
 class FilaPrioritaria(FilaBase):

@@ -2,6 +2,7 @@
 
 
 from fila_base import FilaBase
+from constantes import CODIGO_NORMAL
 
 
 class FilaNormal(FilaBase):
@@ -18,7 +19,7 @@ class FilaNormal(FilaBase):
 
     def gera_senha_atual(self) -> None:
         """Gera a senha para a fila."""
-        self.senhaatual = f'NM{self.codigo}'
+        self.senhaatual = f'{CODIGO_NORMAL}{self.codigo}'
 
     def chama_cliente(self, caixa: str) -> str:
         """Chama o cliente para um caixa.
