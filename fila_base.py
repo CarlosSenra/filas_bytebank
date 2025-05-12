@@ -1,7 +1,10 @@
 """Modulo que implemneta a estrutura de uma fila base."""
 
 
-class FilaBase:
+import abc
+
+
+class FilaBase(abc.ABCMeta):
     """Classe que define uma fila base."""
 
     codigo: int = 0
@@ -18,3 +21,18 @@ class FilaBase:
             self.codigo = 0
         else:
             self.codigo += 1
+
+    @abc.abstractmethod
+    def gera_senha_atual(self):
+        """Define metodo abistrato de gerar senha."""
+        ...
+
+    @abc.abstractmethod
+    def atualiza_fila(self):
+        """Define metodo abistrato de atualizar fila."""
+        ...
+
+    @abc.abstractmethod
+    def chama_cliente(self):
+        """Define metodo abistrato de chamar cliente."""
+        ...

@@ -4,7 +4,7 @@
 from fila_base import FilaBase
 
 
-class filanormal(FilaBase):
+class FilaNormal(FilaBase):
     """Cria uma fila normal.
 
     Args:
